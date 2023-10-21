@@ -39,7 +39,15 @@ Any additional library that is used in this program and needs to be installed on
 
 ## Usage
 
-To run the program either directly click on the 'run' button on your IDE, or run the following command:
+* Ensure you have python installed on your local machine
+
+* Open any IDE of your choice
+
+* Ensure all necessary libraries are installed (refer to the Installation section above)
+
+* Place your input text file in the same directory as the program or provide the full path to the file.
+
+* To run the program either directly click on the 'run' button on your IDE, or run the following command:
 
 ```python3 midterm.py```
 
@@ -83,4 +91,12 @@ Output of TermFrequency.csv
 
 * https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
 
-* 
+* https://uio-ccse.github.io/algoritmisk-tenkning-humanister/02_computational_linguistics/W2_Lecture.html
+
+* https://www.geeksforgeeks.org/understanding-tf-idf-term-frequency-inverse-document-frequency/
+
+* https://stackoverflow.com/questions/49277926/python-tf-idf-algorithm
+
+* https://www.geeksforgeeks.org/python-program-for-most-frequent-word-in-strings-list/
+
+* https://stackoverflow.com/questions/14622835/split-string-on-or-keeping-the-punctuation-mark
