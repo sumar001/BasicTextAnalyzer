@@ -100,3 +100,9 @@ Output of TermFrequency.csv
 * https://www.geeksforgeeks.org/python-program-for-most-frequent-word-in-strings-list/
 
 * https://stackoverflow.com/questions/14622835/split-string-on-or-keeping-the-punctuation-mark
+
+* https://stackoverflow.com/questions/15228054/how-to-count-the-amount-of-sentences-in-a-paragraph-in-python
+
+* https://stackoverflow.com/questions/62388834/most-frequently-occurring-words-of-a-text-file-excluding-stopwords
+
+* https://stackoverflow.com/questions/9797357/dividing-a-string-at-various-punctuation-marks-using-split
