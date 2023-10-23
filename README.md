@@ -54,7 +54,7 @@ Any additional library that is used in this program and needs to be installed on
 
 * Place your input text file in the same directory as the program or provide the full path to the file.
 
-* To run the program either directly click on the 'run' button on your IDE, or run the following command:
+* To run the program, enter the following command:
 
 ```python3 midterm.py```
 
@@ -79,7 +79,7 @@ The output on the screen:
 
 [![7.png](https://i.postimg.cc/8PPn6Wqg/7.png)](https://postimg.cc/XXm8MZjs)
 
-Output.txt - The output file (does not contain the entire content of the file)
+Output.txt - The output file (this screenshot does not contain the entire content of the file)
 
 [![output-8.png](https://i.postimg.cc/6pFHgPTB/output-8.png)](https://postimg.cc/dhmmT48f)
 
