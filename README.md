@@ -23,23 +23,30 @@ Some of the **features** of this program are:
 *  The frequency of each character in the input file
 
 ## Installation
-```pip install nltk```
 
-```pip install collections```
+```pip3 install collections```
 
-```pip install tfidf```
+```pip3 install tfidf```
 
-```pip install scikit-learn```
+```pip3 install scikit-learn```
 
-```pip install pandas```
+```pip3 install pandas```
+
+```pip3 install nltk```
+
+```nltk.download('punkt')```
+
+```nltk.download('stopwords')```
 
 Any additional library that is used in this program and needs to be installed on a local machine, can be installed using the format:
 
-``` pip install <library name>```
+``` pip3 install <libraryName>```
+
+**Note:** This program will run best on python3. If this program is being run on python2, you might run into syntax errors, and might get some potential fomatting issues.
 
 ## Usage
 
-* Ensure you have python installed on your local machine
+* Ensure you have python3 installed on your local machine
 
 * Open any IDE of your choice
 

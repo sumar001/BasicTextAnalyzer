@@ -5,6 +5,7 @@ import collections
 from collections import Counter
 import pandas as pd
 import nltk
+nltk.download('punkt')
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 import pandas as pd
@@ -123,7 +124,7 @@ def user_word_frequency(chars):
     # Get frequency of the word user specified
     freq_of_word = word_freq[userinput]
     
-    return f"The word {userinput} appears {freq_of_word} times."
+    return "The word {} appears {} times.".format(userinput, freq_of_word)
 
 #----------------------------------------------------------------------------------------------------------
 # Input: Content of the input file
@@ -307,7 +308,7 @@ if __name__ == "__main__":
     
     chars = read_file(filename)
     
-    disp_WordCount = f"\nTotal word count:{wordCount(chars)}\n"
+    disp_WordCount = "Total word count: {}\n".format(wordCount(chars))
     disp_TotalSentences = f"Total number of sentences:{num_sentences(chars)}\n"
     disp_longestWord = f"Longest word:{longest_word(chars)}\n"
     disp_longest_length_word = f"Length of the longest word:{length_longest_word(chars)}\n"
