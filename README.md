@@ -6,16 +6,16 @@
 
 ## Program Explanation
 This project involves creating a text analyzer using python programming to analyze different text files and gain insights to the file. The program consists of 13 functions, two of them are to read and write the input and output files, while the remaining 11 functions perform different types of analysis on the input text file.
-This program will prompt the user to enter the name of the input file which they wish to analyze. They will then be asked to write the name of the output file to which the results will be displayed. The output of this file will be displayed on the screen, as well as be saved in an output file. Additionally, the output of the termFrequency_idf and count_chars functions will be saved in a csv file as well as in the output file and displayed on the screen.
+This program will prompt the user to enter the name of the input file which they wish to analyze. They will then be asked to write the name of the output file to which the results will be displayed. The output of this file will be displayed on the screen, as well as be saved in an output file. Additionally, the output of the count_char functions will be saved in a csv file as well as in the output file and displayed on the screen.
 
 Some of the **features** of this program are:
 
-*  Count the number of words in the file 
+*  Count the number of words in the file
 *  Count the number of sentences in the file (delimiters set as period and question mark)
 *  The number of times each word occurs (frequency) in a document
 *  The frequency of a specific word, which the user will input
 *  Top 10 most common words in the file
-*  TF-IDF (Term frequency - Inverse document frequency) - TF IDF evaluates the importance of each word in the document.
+*  TF = Term frequency of each word in the document. Term frequency is the ratio of the number of times the word appears in a document compared to the total number of words in that document. It is an indicator of the term's importance in a given text.
 *  The average number of sentences in a file
 *  The longest word in the input file
 *  The length of the longest word in the input file
@@ -52,7 +52,7 @@ Any additional library that is used in this program and needs to be installed on
 
 * Ensure all necessary libraries are installed (refer to the Installation section above)
 
-* Place your input text file in the same directory as the program or provide the full path to the file.
+* Place your input **text** file in the same directory as the program
 
 * To run the program, enter the following command:
 
@@ -60,7 +60,7 @@ Any additional library that is used in this program and needs to be installed on
 
 - After running the program, do the following when prompted:
 
-1. Enter the input file name
+1. Enter the input text file name
 2. Enter the output file name
 3. Enter the word whose frequency you want to know (number of times the specified word occurs in the document)
 

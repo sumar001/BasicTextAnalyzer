@@ -9,7 +9,6 @@ nltk.download('punkt')
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 #-----------------------------------------------------------------------------------------------------
@@ -71,119 +70,7 @@ def num_sentences(chars):
     
     return len(num_of_sent)
 
-#--------------------------------------------------------------------------------------------------------
-# Input: Content of the input file
-# Output: The total number of times each word appears in the input file
-# Description:
-#           This function is responsible for counting the total number of times each word appears in 
-#           the input text file. It is basically counting the frequency of each word in the file.
-#---------------------------------------------------------------------------------------------------------
 
-def frequency(chars):
-    words = chars.lower().split()
-    # Get the stopwords
-    stoplist = set(stopwords.words('english'))
-    
-    # Create a translation table to remove the punctuation from words
-    translate_table = str.maketrans('','',string.punctuation)
-    
-    # Remove the stopwords and punctuation
-    remove_stopwords = [word.translate(translate_table) for word in words if word not in stoplist]
-    
-    # Count the frequency of each word
-    word_freq = Counter(remove_stopwords)
-    
-    return word_freq
-
-#--------------------------------------------------------------------------------------------------------
-# Input: Content of the input file
-# Output: The frequency of the word specified by the user
-# Description:
-#           This function is responsible for counting the total number of times a specific word appears
-#           in the file. The specific word will be asked to the user.
-#---------------------------------------------------------------------------------------------------------
-
-def user_word_frequency(chars):
-    words = chars.lower().split()
-    
-    # Get the stopwords
-    stoplist = set(stopwords.words('english'))
-    
-    # Create a translation table to remove the punctuation from words
-    translate_table = str.maketrans('','',string.punctuation)
-    
-    # Remove the stopwords and punctuation
-    remove_stopwords = [word.translate(translate_table) for word in words if word not in stoplist]
-    
-    # Count the frequency of each word
-    word_freq = Counter(remove_stopwords)
-    
-    # Take user input
-    userinput = input("Please enter the word you want to calculate the frequency for: ")
-    
-    # Get frequency of the word user specified
-    freq_of_word = word_freq[userinput]
-    
-    return "The word {} appears {} times.".format(userinput, freq_of_word)
-
-#----------------------------------------------------------------------------------------------------------
-# Input: Content of the input file
-# Output: A dataframe consisting of the top 10 words which occured the most number of times in a file
-# Description:
-#           This function is responsible for counting the total number of times a word appears in the file.
-#           It then sorts them in descending order and outputs the top 10 most occuring words.
-#-----------------------------------------------------------------------------------------------------------
-
-def frequent_words(chars):
-    # Call the frequency function to get the frequencies of all the words
-    word_count = frequency(chars)
-    
-    #Sort words by frequency in descending order
-    sort_count = sorted(word_count.items(), key = lambda x: x[1], reverse = True)
-    common_words = sort_count[:10]
-    
-    # display the 10 most common words as a data frame
-    df = pd.DataFrame(common_words, columns=['Word', 'Frequency'])
-    return df
-    
-#--------------------------------------------------------------------------------------------------------
-# Input: Content of the input file
-# Output: TermFrequcny.csv: This new file will be created and it will containg the 
-# Term Frequncy - Inverse Document Frequency (TF-IDF) of each word in the document.
-# Description:
-#           This function is responsible for calculating the Tf-idf value for each word in the document
-#           and then displaying it as a dataframe.
-#---------------------------------------------------------------------------------------------------------
-
-def termFrequency_idf(chars):
-    words = chars.lower().split()
-    
-    # Get the stopwords
-    stoplist = set(stopwords.words('english'))
-    
-    # Create a translation table to remove the punctuation from words
-    translate_table = str.maketrans('','',string.punctuation)
-    
-    # Remove the stopwords and punctuation
-    remove_stopwords = [word.translate(translate_table) for word in words if word not in stoplist]
-    processed_text = " ".join(remove_stopwords)
-    
-    # Create a TF-IDF vectorizer
-    vectorizer = TfidfVectorizer()
-    
-    # Fit and transform the processed text
-    tfidf_matrix = vectorizer.fit_transform([processed_text])
-    
-    # Get the TF-IDF values for all words in the document
-    feature_names = vectorizer.get_feature_names_out()
-    tfidf_values = tfidf_matrix.toarray()[0]
-    
-    # Create a DataFrame to display the words and their TF-IDF scores
-    tfidf_df = pd.DataFrame({'Word': feature_names, 'TF-IDF': tfidf_values})
-    tfidf_df.to_csv('TermFrequency.csv', header=True, index=False)
-    
-    return tfidf_df
-    
 #--------------------------------------------------------------------------------------------------------
 # Input: Content of the input file
 # Output: The average number of words in a sentence for the entire file
@@ -207,7 +94,8 @@ def avg_words_in_sent(chars):
         # return 0 if empty file/no sentences
         return 0
     
-#--------------------------------------------------------------------------------------------------------
+
+    #--------------------------------------------------------------------------------------------------------
 # Input: Content of the input file
 # Output: The longest word in the input file
 # Description:
@@ -250,6 +138,7 @@ def length_longest_word(chars):
         if len(word) > len(longest):
             longest = word 
     return len(longest)
+
 
 #--------------------------------------------------------------------------------------------------------
 # Input: Content of the input file
@@ -298,6 +187,120 @@ def count_chars(chars):
     
     return table
 
+
+#--------------------------------------------------------------------------------------------------------
+# Input: Content of the input file
+# Output: The total number of times each word appears in the input file
+# Description:
+#           This function is responsible for counting the total number of times each word appears in 
+#           the input text file. It is basically counting the frequency of each word in the file.
+#---------------------------------------------------------------------------------------------------------
+
+def frequency(chars):
+    words = chars.lower().split()
+    # Get the stopwords
+    stoplist = set(stopwords.words('english'))
+    
+    # Create a translation table to remove the punctuation from words
+    translate_table = str.maketrans('','',string.punctuation)
+    
+    # Remove the stopwords and punctuation
+    remove_stopwords = [word.translate(translate_table) for word in words if word not in stoplist]
+    
+    # Count the frequency of each word
+    word_freq = Counter(remove_stopwords)
+
+    word_freq_df = pd.DataFrame(list(word_freq.items()), columns=['Word', 'Frequency'])
+
+    
+    return word_freq_df
+
+#--------------------------------------------------------------------------------------------------------
+# Input: Content of the input file
+# Output: The frequency of the word specified by the user
+# Description:
+#           This function is responsible for counting the total number of times a specific word appears
+#           in the file. The specific word will be asked to the user.
+#---------------------------------------------------------------------------------------------------------
+
+def user_word_frequency(chars):
+    words = chars.lower().split()
+    
+    # Get the stopwords
+    stoplist = set(stopwords.words('english'))
+    
+    # Create a translation table to remove the punctuation from words
+    translate_table = str.maketrans('','',string.punctuation)
+    
+    # Remove the stopwords and punctuation
+    remove_stopwords = [word.translate(translate_table) for word in words if word not in stoplist]
+    
+    # Count the frequency of each word
+    word_freq = Counter(remove_stopwords)
+    
+    # Take user input
+    userinput = input("Please enter the word you want to calculate the frequency for: ")
+    
+    # Get frequency of the word user specified
+    freq_of_word = word_freq[userinput]
+    
+    return "The word {} appears {} times.".format(userinput, freq_of_word)
+
+#----------------------------------------------------------------------------------------------------------
+# Input: Content of the input file
+# Output: A data frame consisting of the top 10 words which occured the most number of times in a file
+# Description:
+#           This function is responsible for counting the total number of times a word appears in the file.
+#           It then sorts them in descending order and outputs the top 10 most occuring words.
+#-----------------------------------------------------------------------------------------------------------
+
+def frequent_words(chars):
+    words = chars.lower().split()
+    # Get the stopwords
+    stoplist = set(stopwords.words('english'))
+    
+    # Create a translation table to remove the punctuation from words
+    translate_table = str.maketrans('','',string.punctuation)
+    
+    # Remove the stopwords and punctuation
+    remove_stopwords = [word.translate(translate_table) for word in words if word not in stoplist]
+    
+    # Count the frequency of each word
+    word_freq = Counter(remove_stopwords)
+
+    #Sort words by frequency in descending order
+    sort_count = sorted(word_freq.items(), key = lambda x: x[1], reverse = True)
+    common_words = sort_count[:10]
+    
+    # display the 10 most common words as a data frame
+    df = pd.DataFrame(common_words, columns=['Word', 'Frequency'])
+    return df
+
+
+#---------------------------------------------------------------------------------------------------------
+# Input: Content of the input file
+# Output: A data frame containing the term frequency value of each word in the text file. 
+# Description:
+#           This function is responsible for calculating the Term Frequency value for each word in the 
+#           document and then displaying it as a data frame. Term frequency is the ratio of the number
+#           of times the word appears in a document compared to the total number of words in that document
+#----------------------------------------------------------------------------------------------------------
+def term_frequency(chars):
+    words = chars.lower().split()
+
+    # Count the number of times each word occurs
+    word_freq = Counter(words)
+    total_num_words = len(words)
+
+    # Use a dictionary to store the words as key and term freq as the value
+    tf = {word: count / total_num_words for word, count in word_freq.items()}
+
+    # display the result as a data frame
+    tf_df = pd.DataFrame(list(tf.items()), columns=['Word', 'Term Frequency'])
+
+    return tf_df
+
+
 # Main
     
 if __name__ == "__main__":    
@@ -310,38 +313,40 @@ if __name__ == "__main__":
     
     disp_WordCount = "Total word count: {}\n".format(wordCount(chars))
     disp_TotalSentences = f"Total number of sentences:{num_sentences(chars)}\n"
+    disp_avgWordsInSen = f"The average words in a sentence: {avg_words_in_sent(chars)}\n"
+
     disp_longestWord = f"Longest word:{longest_word(chars)}\n"
     disp_longest_length_word = f"Length of the longest word:{length_longest_word(chars)}\n"
     disp_shortestWord = f"Shortest word:{shortest_word(chars)}\n"
+
+
     disp_count_chars = f"{count_chars(chars)}\n"
+    disp_frequency = f"{frequency(chars)}"
+    disp_userWord_freq = f"{user_word_frequency(chars)}\n"
+
     disp_freqWords = f" Top 10 most common words are: \n"
     disp_freqWords += f"{frequent_words(chars)}\n"
-    disp_tfIDF = f"The term frequency of the words in the document are: \n"
-    disp_tfIDF += f"{termFrequency_idf(chars)}\n"
-    disp_avgWordsInSen = f"The average words in a senternce: {avg_words_in_sent(chars)}\n"
-    
-    result = frequency(chars)
-    disp_frequency = ""
-    for word,count in result.items():
-        disp_frequency += f" '{word}' : {count}\n"
-        
-    disp_userWord_freq = f"{user_word_frequency(chars)}\n"
-    
+
+    disp_term_frequency = f"{term_frequency(chars)}"
+
+
     print(disp_WordCount)
     print(disp_TotalSentences)
+    print(disp_avgWordsInSen)
+    
     print(disp_longestWord)
     print(disp_longest_length_word)
     print(disp_shortestWord)
+
     print(disp_count_chars)
-    print(disp_tfIDF)
-    print(disp_avgWordsInSen)
     print(disp_frequency)
     print(disp_userWord_freq)
     print(disp_freqWords)
+    print(disp_term_frequency)
     
     
     # Call write_file function to write the results to the file
-    output_data1 = disp_WordCount + disp_TotalSentences + disp_longestWord + disp_longest_length_word + disp_shortestWord + disp_count_chars + disp_frequency + disp_userWord_freq + disp_freqWords + disp_tfIDF + disp_avgWordsInSen
+    output_data1 = disp_WordCount + disp_TotalSentences + disp_avgWordsInSen + disp_longestWord + disp_longest_length_word + disp_shortestWord + disp_count_chars + disp_frequency + disp_userWord_freq + disp_freqWords + disp_term_frequency
     
     write_file(output_Filename, output_data1)
 
