@@ -47,8 +47,10 @@ def wordCount(chars):
     # Split the file content. The delimiter is white space
     words = chars.split()
     wordCount = 0
+
     for word in words:
-        wordCount += 1
+            if word.strip():
+                wordCount += 1
         
     return wordCount
 
@@ -65,10 +67,15 @@ def num_sentences(chars):
     # Split the text using the regex by using period or question mark as delimiters
     num_of_sent = re.split(r'[.?]+', chars)
     
-    # Filter empty sentences
-    num_of_sent = [sentence for sentence in num_of_sent if sentence.strip()]
+    # Initialize a counter for non-empty sentences
+    sentence_count = 0
     
-    return len(num_of_sent)
+    # Iterate through the sentences and count non-empty ones
+    for sentence in num_of_sent:
+        if sentence.strip():
+            sentence_count += 1
+    
+    return sentence_count
 
 
 #--------------------------------------------------------------------------------------------------------
@@ -95,7 +102,7 @@ def avg_words_in_sent(chars):
         return 0
     
 
-    #--------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 # Input: Content of the input file
 # Output: The longest word in the input file
 # Description:
@@ -150,10 +157,14 @@ def length_longest_word(chars):
 def shortest_word(chars):
     words = chars.split()
     
+    # Check for empty strings
     if not words:
         return None
     
+    # Initialize to the first word
     shortest_word = words[0]
+
+    # Check through all the words for the shortest word
     for word in words:
         if len(word) < len(shortest_word):
             shortest_word = word
@@ -244,7 +255,7 @@ def user_word_frequency(chars):
     # Get frequency of the word user specified
     freq_of_word = word_freq[userinput]
     
-    return "The word {} appears {} times.".format(userinput, freq_of_word)
+    return "The word {} appears {} times. \n".format(userinput, freq_of_word)
 
 #----------------------------------------------------------------------------------------------------------
 # Input: Content of the input file
@@ -310,7 +321,7 @@ if __name__ == "__main__":
     
     
     chars = read_file(filename)
-    
+
     disp_WordCount = "Total word count: {}\n".format(wordCount(chars))
     disp_TotalSentences = f"Total number of sentences:{num_sentences(chars)}\n"
     disp_avgWordsInSen = f"The average words in a sentence: {avg_words_in_sent(chars)}\n"
@@ -328,8 +339,10 @@ if __name__ == "__main__":
     disp_freqWords += f"{frequent_words(chars)}\n"
 
     disp_term_frequency = f"{term_frequency(chars)}"
+    disp_newline = "\n"
 
 
+    print("\n")
     print(disp_WordCount)
     print(disp_TotalSentences)
     print(disp_avgWordsInSen)
@@ -346,7 +359,7 @@ if __name__ == "__main__":
     
     
     # Call write_file function to write the results to the file
-    output_data1 = disp_WordCount + disp_TotalSentences + disp_avgWordsInSen + disp_longestWord + disp_longest_length_word + disp_shortestWord + disp_count_chars + disp_frequency + disp_userWord_freq + disp_freqWords + disp_term_frequency
+    output_data1 = disp_WordCount + disp_TotalSentences + disp_avgWordsInSen + disp_longestWord + disp_longest_length_word + disp_shortestWord + disp_count_chars + disp_frequency + disp_newline + disp_userWord_freq + disp_freqWords + disp_term_frequency
     
     write_file(output_Filename, output_data1)
 

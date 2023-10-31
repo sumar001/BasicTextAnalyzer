@@ -1,3 +1,5 @@
+##### This Project is for course: INF 1340 - Programming for Data Science at University of Toronto (Faculty of Information), supervised by Dr. Maher Elshakankiri
+
 # Project: Text Analyzer
 ### Name: Saad Umar
 ### Course: INF 1340 - Programming for Data Science
@@ -5,8 +7,8 @@
 ### Instructor: Dr. Maher Elshakankiri
 
 ## Program Explanation
-This project involves creating a text analyzer using python programming to analyze different text files and gain insights to the file. The program consists of 13 functions, two of them are to read and write the input and output files, while the remaining 11 functions perform different types of analysis on the input text file.
-This program will prompt the user to enter the name of the input file which they wish to analyze. They will then be asked to write the name of the output file to which the results will be displayed. The output of this file will be displayed on the screen, as well as be saved in an output file. Additionally, the output of the count_char functions will be saved in a csv file as well as in the output file and displayed on the screen.
+This project involves creating a text analyzer using python programming to analyze text files and gain insights to the file. The program consists of 13 functions plus the main, two of them are to read and write the input and output files, while the remaining 11 functions perform different types of analysis on the input text file.
+This program will prompt the user to enter the name of the input file which they wish to analyze (ensure that the input file is in the same directory as the `Midterm.py` file). The user will then be asked to write the name of the output file to which the results will be displayed. The results of this program will be displayed on the screen, as well as be saved in an output file. Additionally, the output of the count_char functions will be saved in a csv file as well as in the output file and displayed on the screen.
 
 Some of the **features** of this program are:
 
@@ -25,8 +27,6 @@ Some of the **features** of this program are:
 ## Installation
 
 ```pip3 install collections```
-
-```pip3 install tfidf```
 
 ```pip3 install scikit-learn```
 
@@ -56,7 +56,7 @@ Any additional library that is used in this program and needs to be installed on
 
 * To run the program, enter the following command:
 
-```python3 midterm.py```
+```python3 Midterm.py```
 
 - After running the program, do the following when prompted:
 
@@ -71,10 +71,13 @@ Any additional library that is used in this program and needs to be installed on
 
 The output on the screen:
 [![1.png](https://i.postimg.cc/KYgWY2CK/1.png)](https://postimg.cc/wtg2WSqH)
+
 [![2.png](https://i.postimg.cc/cHybgzNF/2.png)](https://postimg.cc/bGgT43rn)
+
 [![3.png](https://i.postimg.cc/0QYHpCkP/3.png)](https://postimg.cc/vgmzyfxN)
+
 [![4.png](https://i.postimg.cc/P5C36HX6/4.png)](https://postimg.cc/pmtJTgn8)
-[![5.png](https://i.postimg.cc/fy52PTSP/5.png)](https://postimg.cc/xNJ3JQRG)
+
 [![6.png](https://i.postimg.cc/SQGvRV1G/6.png)](https://postimg.cc/z3VjPwrL)
 
 [![7.png](https://i.postimg.cc/8PPn6Wqg/7.png)](https://postimg.cc/XXm8MZjs)
@@ -87,9 +90,8 @@ Output of alphabet_frequency.csv
 
 [![9-alpha-freq.png](https://i.postimg.cc/ZK7sFnSB/9-alpha-freq.png)](https://postimg.cc/xcmP90qn)
 
-Output of TermFrequency.csv
 
-[![10-tfidf.png](https://i.postimg.cc/VvzZ4bvM/10-tfidf.png)](https://postimg.cc/r0Y9wsSF)
+[![Screen-Shot-2023-10-31-at-2-10-54-PM.png](https://i.postimg.cc/yddzNfFB/Screen-Shot-2023-10-31-at-2-10-54-PM.png)](https://postimg.cc/QBRz4J4n)
 
 
 ## References

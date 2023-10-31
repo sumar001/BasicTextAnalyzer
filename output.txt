@@ -44,7 +44,9 @@ Shortest word:a
 2222  newsletter          1
 2223        hear          1
 
-[2224 rows x 2 columns]The word state appears 5 times.
+[2224 rows x 2 columns]
+The word please appears 3 times. 
+
  Top 10 most common words are: 
          Word  Frequency
 0     project         83
